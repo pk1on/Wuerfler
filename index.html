@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>
+			Titel der Seite
+		</title>
+		<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+		<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+	</head>
+	<body class="body">
+		
+		<div>
+			<div class="num" id="num">3</div>
+			<br>
+			Würfe <input class="input" type="number" id="lenght" value="200" min="1" max="99999999">
+			<button class="button" id="würfeln" type="submit" pys-onCLick="num_generieren">Generieren!</button>
+		</div>
+	
+	<py-script>
+		def num_generieren(*args):
+			from random import randint
+
+			throws = int(Element('lenght').element.value)
+			ranNu = 0
+			one = 0
+			two = 0
+			three = 0
+			four = 0
+			five = 0
+			six = 0
+
+
+			while throws != 0:
+				ranNu = randint(1, 6)
+				if ranNu == 1:
+					one += 1
+				if ranNu == 2:
+					two += 1
+				if ranNu == 3:
+					three += 1
+				if ranNu == 4:
+					four += 1
+				if ranNu == 5:
+					five += 1
+				if ranNu == 6:
+					six += 1
+
+				ranNu = 0
+				throws = throws - 1
+
+			Element('num').element.innerText = one, two, three, four, five, six
+			print(one, two, three, four, five, six)
+	
+	</py-script>
+	</body>
+</html>
